@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fishes', function (Blueprint $table) {
+            // ->comment("") 這個是欄位註解
             $table->id();
             $table->string('name', 255);
-            $table->unsignedBigInteger('sid');
+            $table->foreignId('sid');
+            $table->foreign('sid')->references('id')->on('seas')->onDelete('cascade');
+            // onDelete 連動刪除
             $table->unsignedInteger('longest');
             $table->unsignedInteger('shortest');
             $table->date('start');
@@ -22,7 +25,6 @@ return new class extends Migration
             $table->unsignedInteger('lightest_weight');
             $table->unsignedInteger('heaviest_weight');
             $table->timestamps();
-            $table->foreign('sid')->references('id')->on('seas');
         });
     }
 
