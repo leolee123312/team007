@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('seas', function (Blueprint $table) {
-            $table->id();
-            $table->string('ocean_name', 100);
-            $table->string('region', 100)->nullable(false);
-            $table->bigInteger('area_sq_km')->unsigned();
-            $table->bigInteger('avg_depth')->unsigned();
-            $table->string('geomorphology',100)->nullable(false);
+            $table->id()->comment("編號");
+            $table->string('ocean_name', 100)->comment("海域");
+            $table->string('region', 100)->nullable(false)->comment("地區");
+            $table->bigInteger('area_sq_km')->unsigned()->comment("面積(平方千米)");
+            $table->bigInteger('avg_depth')->unsigned()->comment("平均深度");
+            $table->string('geomorphology',100)->nullable(false)->comment("地貌");
             $table->timestamps();
         });
     }
