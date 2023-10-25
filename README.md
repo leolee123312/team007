@@ -64,3 +64,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## db 加註
+```mysql
+魚類表格
+    ALTER TABLE fishes modify column name varchar(255) not null COMMENT '魚名';
+    ALTER TABLE fishes modify column sid bigint not null DEFAULT 0 COMMENT '海域(外部鍵)';
+    ALTER TABLE fishes modify column longest int not null DEFAULT 0 COMMENT '小(厘米)';
+    ALTER TABLE fishes modify column shortest int not null DEFAULT 0 COMMENT '大(厘米)';
+    ALTER TABLE fishes MODIFY COLUMN start DATE NOT NULL COMMENT '起始(月)';
+
+    ALTER TABLE fishes modify column end DATE not null  COMMENT '結束(月)';
+    ALTER TABLE fishes modify column lightest_weight int not null  DEFAULT 0  COMMENT '最輕(磅)';
+    ALTER TABLE fishes modify column heaviest_weight int not null  DEFAULT 0  COMMENT '最重(磅)';
+```
