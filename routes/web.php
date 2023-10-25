@@ -1,7 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
+use App\Services\ToolsService;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +11,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/test', function (ToolsService $tools) {
+
+Route::get('/test',function(ToolsService $tools ){
+   
     return $tools->say();
 });
 
-class ToolsService{
-    public  function say() {return 'hello word!!';}
-}
+
+
