@@ -64,7 +64,7 @@ class Seas extends Seeder
     }
     public function run(): void
     {
-        for ($i=0; $i < 25; $i++) { 
+        for ($i=0; $i < 32; $i++) { 
             
             $ocean_name=$this->generateRandomOcean_name();
             $region=$this->generateRandomRegion();

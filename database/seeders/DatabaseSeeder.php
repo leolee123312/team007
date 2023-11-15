@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(Fishes::class);
         $this->call(Seas::class);
+        
 
     }
     
