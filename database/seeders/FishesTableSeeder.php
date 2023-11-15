@@ -99,7 +99,7 @@ class FishesTableSeeder extends Seeder
             // 時間是用Carbon::now()現在時間
             DB::table('Fishes')->insert([
                 'name' =>$Fishes_name,
-                'sid' =>rand(1,25),
+                'sid' =>rand(1,6),
                 'longest'=>$longest,
                 'shortest'=>$shortest,
                 'start'=>$start,
