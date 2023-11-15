@@ -45,17 +45,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/testEventandLinster', 'testEventandLinsterController@create')->name('Event');
 
 
-// Route::get('/testEventandLinster',[App\Http\Controllers\testEventandLinsterController::class, 'show'])->name('show');
-// Route::post('/testEventandLinster',[App\Http\Controllers\testEventandLinsterController::class, 'showSave'])->name('show.Save');
-// Route::get('/page',[App\Http\Controllers\testEventandLinsterController::class, 'page'])->name('page');
-// //
-// Route::get('/index',[App\Http\Controllers\testEventandLinsterController::class,'index']);
-// Route::Post('/subscribe',[App\Http\Controllers\testEventandLinsterController::class,'subscribe']);
+Route::get('/testEventandLinster',[App\Http\Controllers\testEventandLinsterController::class, 'show'])->name('show');
+Route::post('/testEventandLinster',[App\Http\Controllers\testEventandLinsterController::class, 'showSave'])->name('show.Save');
+Route::get('/page',[App\Http\Controllers\testEventandLinsterController::class, 'page'])->name('page');
+//
+Route::get('/index',[App\Http\Controllers\testEventandLinsterController::class,'index']);
+Route::Post('/subscribe',[App\Http\Controllers\testEventandLinsterController::class,'subscribe']);
 
-// //
-// Route::get('/device',[App\Http\Controllers\DeviceController::class,'_invoke']);
+//
+Route::get('/device',[App\Http\Controllers\DeviceController::class,'_invoke']);
 
-// //      
+//      
 Route::get('/Fish',[App\Http\Controllers\FishesController::class,'index']);
 Route::get('/Seas',[App\Http\Controllers\SeasController::class,'index']);
 

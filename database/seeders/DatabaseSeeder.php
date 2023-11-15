@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(Fishes::class);
-        $this->call(Seas::class);
+        $this->call(FishesTableSeeder::class);
+        $this->call(SeasTableSeeder::class);
         
 
     }
