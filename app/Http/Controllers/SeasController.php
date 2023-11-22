@@ -11,7 +11,10 @@ class SeasController extends Controller
      */
     public function index()
     {
-      return  Sea::all()->toArray();
+        $seas = Sea::all();
+        
+        return view('seas.index',compact('seas'));
+        
     }
 
     /**

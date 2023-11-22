@@ -12,8 +12,11 @@ class FishesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
-       return Fish::all()->toArray();
+    {
+        $fishes = Fish::all();
+        
+        return view('fishes.index',compact('fishes'));
+        
     }
 
     /**
