@@ -97,7 +97,7 @@ class FishesTableSeeder extends Seeder
             $random_datetime = Carbon::now()->subDays(rand(1, 365));
     
             // 時間是用Carbon::now()現在時間
-            DB::table('Fishes')->insert([
+            DB::table('fishes')->insert([
                 'name' =>$Fishes_name,
                 'sid' =>rand(1,6),
                 'longest'=>$longest,

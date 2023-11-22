@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Fishes;
+use App\Models\Fish;
 use Illuminate\Http\Request;
 
 class FishesController extends Controller
@@ -13,7 +13,7 @@ class FishesController extends Controller
      */
     public function index()
     {   
-       return  Fishes::all()->toArray();
+       return Fish::all()->toArray();
     }
 
     /**
@@ -37,7 +37,7 @@ class FishesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Fish::findOrFail($id)->toArray();
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seas;
+use App\Models\Sea;
 class SeasController extends Controller
 {
     /**
@@ -11,7 +11,7 @@ class SeasController extends Controller
      */
     public function index()
     {
-      return  Seas::all()->toArray();
+      return  Sea::all()->toArray();
     }
 
     /**
@@ -35,7 +35,7 @@ class SeasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Sea::findOrFail($id)->toArray();
     }
 
     /**
