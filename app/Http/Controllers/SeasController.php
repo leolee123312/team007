@@ -11,7 +11,10 @@ class SeasController extends Controller
      */
     public function index()
     {
-      return  Sea::all()->toArray();
+        //從Model拿資料
+        $t= Sea::all()->toArray();
+        //把資料送到view   
+      return  view('seas.index')->with('teams',$t);
     }
 
     /**
@@ -44,6 +47,7 @@ class SeasController extends Controller
     public function edit(string $id)
     {
         //
+        return Sea::findOrFail($id)->toArray();
     }
 
     /**
