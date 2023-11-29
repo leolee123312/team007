@@ -1,9 +1,9 @@
-<html>
-<head>
-                <title>列出所有魚類</title>
-</head>
 
-<body>
+@extends('app')
+
+@section('title', 'NBA網站 - 列出所有魚類')
+
+@section('nba_contents')
 <h1>列出所有魚類</h1>
 
 <table>
@@ -33,8 +33,4 @@
         </tr>
     @endfor
 <table>
-
-
-
-</body> 
-</html>
+@endsection

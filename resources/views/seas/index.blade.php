@@ -1,10 +1,9 @@
-<html>
 
-<head>
-    <title>列出所有魚類</title>
-</head>
+@extends('app')
 
-<body>
+@section('title', '網站 - 列出所有海域')
+
+@section('nba_contents')
 <h1>列出對應的海域</h1>
 
 <table>
@@ -28,6 +27,4 @@
         </tr>
     @endfor
 <table>
-
-</body>
-</html>
+@endsection
