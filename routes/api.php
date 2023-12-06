@@ -30,4 +30,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // ---------------------
 // if we want to make sign up use API with Post Method
 
-Route::post('add',[DeviceController::class, 'add']);
+Route::get('/add',[DeviceController::class, '_invoke'])->name('device');

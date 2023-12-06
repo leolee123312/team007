@@ -11,10 +11,7 @@ class SeasController extends Controller
      */
     public function index()
     {
-        $seas = Sea::all();
-        
-        return view('seas.index',compact('seas'));
-        
+      return  Sea::all()->toArray();
     }
 
     /**
@@ -47,6 +44,7 @@ class SeasController extends Controller
     public function edit(string $id)
     {
         //
+        return Sea::findOrFail($id)->toArray();
     }
 
     /**
