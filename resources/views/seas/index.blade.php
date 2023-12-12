@@ -2,6 +2,8 @@
 
 
 @extends('app')
+@section('title', '魚類網站 - 列出所屬海洋')
+
 @section('seas_contents')    
 
 <h1>列印出對應的海域</h1>
@@ -31,7 +33,7 @@
                                 <a href="{{ route('seas.edit', ['id'=>$sea->id]) }}" class="btn btn-primary btn-sm">修改</a> 
                                 <form action="{{ url('/seas/delete', ['id' => $sea->id]) }}" method="post" style="display: inline;"  >
                                         <input class="btn btn-primary btn-sm" type="submit" value="刪除" />
-                                        @method('delete')
+                                         @method('delete')
                                         @csrf
                                 </form>
                             

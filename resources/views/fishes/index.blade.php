@@ -1,5 +1,6 @@
 
 @extends('app')
+@section('title', '魚類網站 - 列出所有魚類')
 @section('fishes_contents')    
     <h1>列印出所有魚類</h1>
         <table class="table">
