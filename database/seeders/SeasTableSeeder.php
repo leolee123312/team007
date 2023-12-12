@@ -12,39 +12,7 @@ class SeasTableSeeder extends Seeder
      * Run the database seeds.
      */
 
-     public function generateRandomOceanName()
-     {
-         $name = array('北大西洋', '太平洋', '印度洋', '北极海域', '大西洋', '東太平洋');
-         
-         $sid = rand(1, 6); // 随机生成 sid，这里假设 sid 的范围是 1 到 6
-     
-         // 使用 switch 语句根据不同的 sid 设置 $ocean_name
-         switch ($sid) {
-             case 1:
-                 $ocean_name = '北大西洋';
-                 break;
-             case 2:
-                 $ocean_name = '太平洋';
-                 break;
-             case 3:
-                 $ocean_name = '印度洋';
-                 break;
-             case 4:
-                 $ocean_name = '北极海域';
-                 break;
-             case 5:
-                 $ocean_name = '大西洋';
-                 break;
-             case 6:
-                 $ocean_name = '東太平洋';
-                 break;
-             default:
-                 // 在没有匹配的情况下，设置默认值
-                 $ocean_name = '未知海域';
-         }
-     
-         return $ocean_name;
-     }
+   
 
     public function generateRandomRegion(){
         $name = array('西半球', '東半球', '北半球', '南半球');
@@ -91,9 +59,10 @@ class SeasTableSeeder extends Seeder
     }
     public function run(): void
     {
-        for ($i=0; $i < 32; $i++) { 
+        $names = array('北大西洋', '太平洋', '印度洋', '北极海域', '大西洋', '東太平洋');
+        for ($i=0; $i < count($names); $i++) { 
             
-            $ocean_name=$this->generateRandomOceanName();
+            $ocean_name=$names[$i];
             $region=$this->generateRandomRegion();
             $area_sq_km=$this->generateRandomArea_sq_km();
             $avg_depth=$this->generateRandomAvg_depth();

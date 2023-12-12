@@ -17,5 +17,14 @@ class Sea extends Model
     ];
     protected $table = 'seas';
 
-
+    public function fishes()
+    {
+        return $this->hasMany('App\Models\Fish', 'sid');
+    }
+    
+    public function delete()
+    {
+        $this->fishes()->delete();
+        return parent::delete();
+    }        
 }

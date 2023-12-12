@@ -40,7 +40,8 @@ class FishesController extends Controller
      */
     public function show(string $id)
     {
-        return Fish::findOrFail($id)->toArray();
+        $fish =  Fish::findOrFail($id);
+        return view('fishes.show')->with('fish',$fish);
     }
 
     /**
@@ -64,6 +65,8 @@ class FishesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $fish = Fish::findOrFail($id);
+        $fish->delete();
+        return redirect('fishes');
     }
 }

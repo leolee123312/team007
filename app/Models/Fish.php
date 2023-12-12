@@ -20,5 +20,9 @@ class Fish extends Model
     ];
     
     protected $table = 'fishes';
-
+    // 每只魚類只屬於一個海域
+    public function Sea(){
+        return $this->belongsTo('App\Models\Sea', 'sid', 'id');
+    }
+    
 }

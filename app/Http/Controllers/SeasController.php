@@ -37,8 +37,12 @@ class SeasController extends Controller
      */
     public function show(string $id)
     {
-        return Sea::findOrFail($id)->toArray();
+        $sea = Sea::findOrFail($id);
+        $fishes = $sea->fishes;
+
+        return view('seas.show',['sea'=>$sea,'fishes'=>$fishes]);
     }
+ 
 
     /**
      * Show the form for editing the specified resource.
@@ -60,8 +64,10 @@ class SeasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $sea = Sea::findOrFail($id);
+        $sea->delete();
+        return redirect('seas');
     }
 }
