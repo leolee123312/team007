@@ -1,7 +1,10 @@
 
 @extends('app')
 @section('title', '魚類網站 - 列出所有魚類')
-@section('fishes_contents')    
+@section('fishes_contents')
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('fishes.create') }} ">新增魚類</a>
+    <a href="{{ route('fishes.index') }} ">所有魚類</a>    
     <h1>列印出所有魚類</h1>
         <table class="table">
             <thead>
