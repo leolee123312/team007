@@ -5,8 +5,9 @@
 @section('title', '魚類網站 - 列出所屬海洋')
 
 @section('seas_contents')    
-
-<h1>列印出對應的海域</h1>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('seas.create') }} ">新增海域</a>
+    <a href="{{ route('seas.index') }} ">所有海域</a>
     <table class="table">
             <thead>
                 <tr>

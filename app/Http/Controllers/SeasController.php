@@ -22,6 +22,7 @@ class SeasController extends Controller
     public function create()
     {
         //
+        return view('seas.create');
     }
 
     /**
@@ -51,6 +52,8 @@ class SeasController extends Controller
     {
         //
         return Sea::findOrFail($id)->toArray();
+        $sea = Sea::findOrFail($id);
+        return view('seas.edit',['sea'=>$sea]);
     }
 
     /**
