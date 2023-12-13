@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('tid', '所屬海域：') !!}
-    <!-- 待設計一下拉式選單 -->
+    {!! Form::select('tid', $seas, $seaSelected, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('name','魚名:') !!}

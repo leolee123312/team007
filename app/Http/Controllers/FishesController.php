@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Fish;
 use Illuminate\Http\Request;
+use App\Models\Team;
 
 class FishesController extends Controller
 {
@@ -26,6 +27,8 @@ class FishesController extends Controller
     {
         //
         return view('fishes.create');
+        $seas= Sea::orderBy('seas.id','asc')->pluck('seas.name','seas.id');
+        return view('fishes.create',['seas'=>$seas,'teamSelected'=> null]);
     }
 
     /**
@@ -33,7 +36,25 @@ class FishesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $ocean_name = $request->input('ocean_name');
+        $longest = $request->input('longest');
+        $shortest = $request->input('shortest');
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $lightest_weight = $request->input('lightest_weight');
+        $heaviest_weight = $request->input('heaviest_weight');
+
+        $fish = Fish::create([
+            'name'=>$name,
+            'ocean_name'=>$ocean_name,
+            'longest'=> $longest,
+            'shortest'=> $shortest,
+            'start'=> $start,
+            'end'=> $end,
+            'lightest_weight'=>$lightest_weight,
+            'heaviest_weight'=>$heaviest_weight]);
+        return redirect('fishes');
     }
 
     /**
@@ -51,7 +72,9 @@ class FishesController extends Controller
     public function edit(string $id)
     {
         $fish = Fish::findOrFail($id);
-        return view('fishes.edit',['player' =>$player]);
+        $seas = Sea::orderBy('seas.id', 'asc')->pluck('seas.name', 'seas.id');
+        $selected_tags = $fish->sea->id;
+        return view('fishes.edit', ['fish' =>$fish, 'seas' => $seas, 'seaSelected' => $selected_tags]);
     }
 
     /**
@@ -59,7 +82,19 @@ class FishesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fish = Fish::findOrFail($id);
+
+        $fish->name = $request->input('name');
+        $fish->tid = $request->input('ocean_name');
+        $fish->longest = $request->input('longest');
+        $fish->shortest = $request->input('shortest');
+        $fish->start = $request->input('start');
+        $fish->end = $request->input('end');
+        $fish->lightest_weight = $request->input('lightest_weight');
+        $fish->heaviest_weight = $request->input('heaviest_weight');
+        $fish->save();
+
+        return redirect('fishes');
     }
 
     /**

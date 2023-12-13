@@ -30,7 +30,23 @@ class SeasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $ocean_name = $request->input('ocean_name');
+        $region = $request->input('region');
+        $area_sq_km = $request->input('area_sq_km');
+        $avg_depth = $request->input('avg_depth');
+        $geomorphology = $request->input('geomorphology');
+
+
+        sea::create([
+            'name' => $name,
+            'region' => $region,
+            'area_sq_km' => $area_sq_km,
+            'avg_depth' => $avg_depth,
+            'geomorphology' => $geomorphology
+        ]);
+        
+        return redirect('seas');
     }
 
     /**
@@ -61,7 +77,17 @@ class SeasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $sea = Sea::findOrFail($id);
+
+        $sea->ocean_name = $request->input('ocean_name');
+        $sea->region = $request->input('region');
+        $sea->area_sq_kme = $request->input('area_sq_km');
+        $sea->avg_depth = $request->input('avg_depth');
+        $sea->geomorphology = $request->input('geomorphology');
+        $sea->save();
+
+        return redirect('seas');
     }
 
     /**

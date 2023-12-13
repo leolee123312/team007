@@ -25,6 +25,8 @@ Route::get('fishes/create',[FishesController::class, 'create'])->name('fishes.cr
 Route::get('fishes/{id}/edit', [FishesController::class, 'edit'])->where('id', '[0-9]+')->name('fishes.edit');
 // 修改魚類資料
 Route::patch('fishes/update/{id}', [FishesController::class, 'update'])->where('id', '[0-9]+')->name('fishes.update');
+// 儲存新魚類資料
+Route::post('fishes/store', [FishesController::class, 'store'])->where('id', '[0-9]+')->name('fishes.store');
 
 // 顯示顯示所有海域資料
 Route::get('seas',[SeasController::class,'index'])->name('seas.index');
