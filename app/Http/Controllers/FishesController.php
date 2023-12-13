@@ -25,6 +25,7 @@ class FishesController extends Controller
     public function create()
     {
         //
+        return view('fishes.create');
     }
 
     /**
@@ -49,7 +50,8 @@ class FishesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $fish = Fish::findOrFail($id);
+        return view('fishes.edit',['player' =>$player]);
     }
 
     /**
