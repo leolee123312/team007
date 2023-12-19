@@ -4,8 +4,11 @@
 @extends('app')
 @section('title', '魚類網站 - 列出所屬海洋')
 
-@section('seas_contents')    
-
+@section('seas_contents')
+<div>
+    <a href="{{ route('seas.create') }} " class="btn btn-primary btn-sm ">新增海域</a>
+   
+</div>   
 <h1>列印出對應的海域</h1>
     <table class="table">
             <thead>
