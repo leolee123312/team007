@@ -43,3 +43,27 @@ Route::get('seas/create', [SeasController::class, 'create'])->name('seas.create'
 Route::post('seas/store', [SeasController::class, 'store'])->where('id', '[0-9]+')->name('seas.store');
 // 修改海域資料
 Route::patch('seas/update/{id}', [SeasController::class, 'update'])->where('id', '[0-9]+')->name('seas.update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
