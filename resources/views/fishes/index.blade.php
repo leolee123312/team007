@@ -101,7 +101,7 @@
 </div>
 
     <h1>列印出所有魚類</h1>
-        <table class="table">
+        <table class="table" id="example">
             <thead>
                 <tr>
                     <th scope="col">魚名</th>
@@ -151,9 +151,14 @@
             </tbody>
         </table>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
         <script>
             
             $(document).ready(function() {
+                $(document).ready(function () {
+                    $('#example').DataTable();
+                })
                 $('#cf-form').submit( function(e) {
                     e.preventDefault(); 
                     let url = $(this).attr('action');

@@ -85,7 +85,7 @@ class FishesTableSeeder extends Seeder
     }
     public function run(): void
     {
-        for ($i=0; $i < 32; $i++) { 
+        for ($i=0; $i < 87; $i++) { 
             
             $Fishes_name=$this->generateRandomFishes_name();
             $longest=$this->generateRandomLongest();
