@@ -16,10 +16,10 @@ class DeviceController extends Controller
         
         $device = new Device($response);
         // response是api
-        dd($device->deAPI());
+        
         // return view('device',compact('device'));
         // return view('device',['deviceData' => $device->deAPI()]);
-
+        return view('api',['device'=>$device->deAPI()]);
        
         
     }

@@ -1,4 +1,3 @@
-{{-- 這頁就是整個登入畫面的主畫面 --}}
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -8,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -20,7 +19,6 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            {{-- 這個就是登入上方的選單，俗稱header --}}
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -37,7 +35,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -77,13 +74,7 @@
 
         <main class="py-4">
             @yield('content')
-            {{-- 這裡對應到login.blade.php的@section()..@endsction --}}
         </main>
-        
-        
     </div>
-    <main class="py-4 text-center ">
-        @yield('index')
-    </main>
 </body>
 </html>

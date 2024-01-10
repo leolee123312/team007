@@ -9,7 +9,6 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
-                        {{-- 當網址打http://127.0.0.1:8000/register到這頁面 --}}
                         @csrf
 
                         <div class="row mb-3">

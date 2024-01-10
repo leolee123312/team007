@@ -49,7 +49,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // 這裡是傳送表單
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -69,6 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => User::ROLE_USER,  // 預設為一般使用者
         ]);
     }
 }

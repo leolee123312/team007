@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{-- Reset Password --}}
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +15,6 @@
                     @endif
 
                     <form method="POST" action="{{ route('password.email') }}">
-                        {{-- name('password.email') --}}
                         @csrf
 
                         <div class="row mb-3">

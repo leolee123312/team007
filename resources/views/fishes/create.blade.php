@@ -8,6 +8,7 @@
     {!! Form::open(['url' => 'fishes/store']) !!}
     @include('fishes.form', ['submitButtonText'=>"新增魚類資料"])
     {!! Form::close() !!}
+    
 @endsection
 {{-- composer require laravelcollective/html --prefer-source 
     laravel 支援html  --}}

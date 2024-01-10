@@ -3,9 +3,34 @@
 @section('title', '魚類網站 - 列出所有魚類')
 @section('fishes_contents')    
 <div>
+    @can('admin')
     <a href="{{ route('fishes.create') }} " class="btn btn-primary btn-sm ">新增魚類</a>
     <button class="btn btn-primary btn-sm " data-toggle="modal" data-target="#createModal">新增魚類快捷</button>
+    @endcan
 </div>
+    <form action="{{ route('fishes.select') }}">
+        <div class="row m-1">
+            <div class="col-md-1 mx-1">
+                查詢<br>起日
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="startdate" name="startdate">
+                @csrf
+
+            </div>
+            <div class="col-md-1 mx-1">
+                查詢<br>迄日
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="enddate" name="enddate">
+                @csrf
+
+            </div>
+            <div class="col-md-2"> 
+                <button type="submit" class="btn btn-primary btn-sm "  id="select">查詢</button>
+            </div>
+        </div>
+    </form>
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content " >
@@ -16,8 +41,12 @@
             </div>
             
             <div class="modal-body">
-                <form action="{{ route('fishes.store') }}" method="POST" >
-                    @csrf
+                
+                <form action="{{ route('fishes.submitForm') }}"  id="cf-form" >
+                    <input type="hidden" id="token" value="{{ @csrf_token() }}">
+                    <br>
+                    <div id="res"></div>
+                    <br>
                     <div class="form-group">  {{-- action 會去執行fishes/store路由的funtion store --}}
                         <label for="name" class="form-label">魚類姓名</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="魚類姓名">
@@ -59,7 +88,7 @@
                         <input type="text" class="form-control" id="heaviest_weight" placeholder="最重體重" name="heaviest_weight">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-primary btn-sm" id="formSubmit">
                             新增魚類
                         </button>
                     </div>
@@ -98,10 +127,13 @@
                     <td>{{ $fish->heaviest_weight }}</td>
                     <form action="{{ url('/fishes/delete', ['id' => $fish->id]) }}" method="post" >
                         <td  >
-                            <a href="{{ route('fishes.show', ['id'=>$fish->id]) }}" class="btn btn-primary btn-sm" style="display: inline;">顯示</a>
+
+                            <a href="{{ route('fishes.show', ['id'=>$fish->id]) }}" class="btn btn-primary btn-sm" >顯示</a>
+                            @can('admin')
                             <a href="{{ route('fishes.edit', ['id'=>$fish->id]) }}" class="btn btn-primary btn-sm" >修改</a> 
-                          
+                            
                             <input class="btn btn-primary btn-sm " type="submit" value="刪除"   />
+                            @endcan
                             @method('delete')
                             @csrf
                         </td>
@@ -118,4 +150,48 @@
                 @endforeach
             </tbody>
         </table>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            
+            $(document).ready(function() {
+                $('#cf-form').submit( function(e) {
+                    e.preventDefault(); 
+                    let url = $(this).attr('action');
+
+                    $.post(url,
+                    {
+                        '_token': $("#token").val(),
+                        name:$("#name").val(),
+                        sid:$("#sid").val(),
+                        longest:$("#longest").val(),
+                        shortest:$("#shortest").val(),
+                        start:$("#start").val(),
+                        end:$("#end").val(),
+                        lightest_weight:$("#lightest_weight").val(),
+                        heaviest_weight:$("#heaviest_weight").val()
+
+                    },
+                        // function(response){
+                        //     if (response.code == 400) {
+                        //         let error = '<span class="alert alert-danger">'++'<;
+                        //         $("#res").html(response.msg);
+                        //     }
+                        // });
+                    function(response){
+                     
+                        if (response.code == 422) {
+                            let error = '<span class="alert alert-danger">'+response.msg+'</span>';
+                             $("#res").html(error);
+                            }
+                    })
+                    
+                    
+                })
+               
+               
+            })
+            
+            
+        </script>
+        
 @endsection
